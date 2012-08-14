@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>htmlfile post test on IE6</title>
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+$(function() {
+    var socket = io.connect();
+ 	socket.on('connect', function() {
+        $('#status').append('::connect::');
+        $('#transport').append(socket.socket.transport.name);
+ 	});
+    socket.on('disconnect', function (reason) {
+        $('#status').append('->disconnect');
+    });
+    $('#hello').click(function() {
+        // from the second time, always buffered.
+    	socket.send('hello');
+    });
+});
+</script>
+<div id="button">
+<input type="button" id="hello" value="hello" />
+</div>
+Status: <div id="status"></div>
+Transport: <div id="transport"></div>
+<hr>
+<b>Problem</b>
+<br>I expect each time I click "hello" button, a server console displays "receive:hello".
+<br>First click is OK. But from the second time, a console doesn't display.
+<br>This problem can only be seen on IE6 with transport "htmlfile".
+<br>Pull request is<a href="https://github.com/LearnBoost/socket.io-client/pull/459">here</a>
+<hr>
+I found this on a following environment.
+<ul>
+    <li>OS: Windows XP SP3</li>
+    <li>browser: IE6
+    <li>node: 0.8.6
+    <li>socket.io: 0.9.10
+    <li>transport: htmlfile
+</ul>    
+</body>
+</html>
+

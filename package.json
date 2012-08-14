@@ -1,0 +1,9 @@
+{
+    "name": "htmlfile_on_IE6"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "express": "2.5.x"
+    , "socket.io": "0.9.10"
+  }
+}
