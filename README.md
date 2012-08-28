@@ -1,4 +1,4 @@
-socket.io-client-htmlfile-ie6-problem
+socket.io-client htmlfile ie6 problem verification code
 =====================================
 This program shows a simple page that has "hello" button.
 I expect each time I click "hello" button, "receive:hello" is displayed on a server console.
